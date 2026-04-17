@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetentionFlow AI | Scripts Viraux & Téléprompteur Intelligent</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/dist/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8b5cf6;
+            --primary-hover: #7c3aed;
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        
+        body { background-color: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* Navigation */
+        nav { padding: 20px 0; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 800; background: linear-gradient(to right, #a78bfa, #8b5cf6); background-clip: text;-webkit-background-clip: text; -webkit-text-fill-color: transparent; color: transparent;}
+
+        /* Hero Section */
+        .hero { padding: 100px 0 60px; text-align: center; }
+        .badge { background: rgba(139, 92, 246, 0.1); color: var(--primary); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; font-weight: 600; margin-bottom: 20px; display: inline-block; }
+        h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
+        .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 30px; }
+        
+        .cta-button { background: var(--primary); color: white; padding: 16px 32px; border-radius: 8px; text-decoration: none; font-weight: 700; display: inline-block; transition: 0.3s; border: none; cursor: pointer; }
+        .cta-button:hover { background: var(--primary-hover); transform: translateY(-2px); }
+
+        /* Features */
+        .section-padding { padding: 80px 0; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+        .card { background: var(--card-bg); padding: 40px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05); }
+        .card i { color: var(--primary); font-size: 2rem; margin-bottom: 20px; }
+        .card h3 { margin-bottom: 15px; }
+
+        /* Demo Placeholder */
+        .demo-box { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border-radius: 20px; padding: 40px; text-align: center; border: 1px solid var(--primary); margin-top: 40px; position: relative; }
+        .demo-visual { height: 300px; background: rgba(255,255,255,0.03); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-style: italic; color: var(--primary); }
+
+        /* Pricing */
+        .pricing-card { max-width: 400px; margin: 0 auto; border: 2px solid var(--primary); position: relative; }
+        .price { font-size: 3rem; font-weight: 800; margin: 20px 0; }
+        .price span { font-size: 1rem; color: var(--text-muted); }
+
+        /* FAQ */
+        .faq-item { margin-bottom: 20px; background: var(--card-bg); padding: 20px; border-radius: 8px; }
+        .faq-item h4 { margin-bottom: 10px; color: var(--primary); }
+
+        /* Footer */
+        footer { padding: 40px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); color: var(--text-muted); }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <nav>
+        <div class="logo">RetentionFlow AI</div>
+        <a href="#waitlist" class="cta-button" style="padding: 10px 20px; font-size: 0.9rem;">Essayer gratuitement</a>
+    </nav>
+
+    <section class="hero">
+        <div class="badge">✨ Offre Founder : 19€/mois à vie</div>
+        <h1>Créez des vidéos virales avec l’IA</h1>
+        <p>Générez des scripts TikTok & Reels qui captivent, et filmez sans stress grâce à notre téléprompteur synchronisé par la voix.</p>
+        <a href="#waitlist" class="cta-button">Rejoindre la liste d'attente</a>
+    </section>
+
+    <section class="section-padding">
+        <div class="demo-box">
+            <h3>Visualisez votre succès</h3>
+            <div class="demo-visual">
+                [Interface du Téléprompteur Voice-Sync en cours de chargement...]
+            </div>
+            <p style="margin-top: 20px; font-size: 0.9rem;">L'IA détecte votre débit de parole et fait défiler le texte en temps réel.</p>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <h2 style="text-align: center;">Pourquoi choisir RetentionFlow ?</h2>
+        <div class="grid">
+            <div class="card">
+                <i class="fas fa-magic"></i>
+                <h3>Scripts IA Viraux</h3>
+                <p>Nos modèles sont entraînés sur les 1% de vidéos les plus virales pour maximiser le watchtime dès la première seconde.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-microphone-alt"></i>
+                <h3>Voice-Sync Prompter</h3>
+                <p>Fini les yeux qui lisent de gauche à droite. Le texte avance uniquement quand vous parlez. Naturel à 100%.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Prédiction de Rétention</h3>
+                <p>Notre algorithme analyse votre script et prédit à quel moment les utilisateurs risquent de scroller.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" style="text-align: center; background: rgba(255,255,255,0.02); border-radius: 30px;">
+        <h2>Utilisé par +500 créateurs</h2>
+        <p style="color: var(--text-muted); margin-bottom: 40px;">"J'ai réduit mon temps de tournage par 4 et mes vues ont explosé."</p>
+        <div style="display: flex; justify-content: center; gap: 20px; opacity: 0.7;">
+            <span>⭐ ⭐ ⭐ ⭐ ⭐</span>
+        </div>
+    </section>
+
+    <section class="section-padding" id="pricing">
+        <h2 style="text-align: center; margin-bottom: 40px;">Une offre unique pour les pionniers</h2>
+        <div class="card pricing-card">
+            <div class="badge">FOUNDER PLAN</div>
+            <div class="price">19€<span>/mois</span></div>
+            <ul style="list-style: none; text-align: left; margin-bottom: 30px; color: var(--text-muted);">
+                <li><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i> Scripts illimités</li>
+                <li><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i> Téléprompteur Voice-Sync</li>
+                <li><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i> Analyse de rétention IA</li>
+                <li><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i> Prix bloqué à vie</li>
+            </ul>
+            <a href="#waitlist" class="cta-button" style="width: 100%;">Saisir l'offre maintenant</a>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <h2 style="text-align: center; margin-bottom: 40px;">Questions fréquentes</h2>
+        <div class="faq-item">
+            <h4>Comment fonctionne la synchronisation vocale ?</h4>
+            <p>Notre technologie utilise le micro de votre téléphone ou ordinateur pour écouter vos mots et ajuster la vitesse du script automatiquement.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Puis-je annuler mon abonnement ?</h4>
+            <p>Oui, sans engagement. Mais attention, si vous résiliez, vous perdrez le tarif préférentiel "Founder" de 19€.</p>
+        </div>
+    </section>
+
+    <section class="section-padding" id="waitlist" style="text-align: center;">
+        <div class="card" style="background: linear-gradient(to right, #4c1d95, #8b5cf6);">
+            <h2 style="margin-bottom: 20px;">Prêt à percer sur les réseaux ?</h2>
+            <p style="margin-bottom: 30px;">Rejoignez les 200 personnes déjà inscrites pour l'accès anticipé.</p>
+            <form style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                <input type="email" placeholder="Votre meilleur email..." style="padding: 15px; border-radius: 8px; border: none; width: 300px;">
+                <button type="submit" class="cta-button" style="background: #000;">Réserver ma place</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 RetentionFlow AI. Tous droits réservés.</p>
+    </footer>
+</div>
+
+</body>
+</html>
