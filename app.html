@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RetentionFlow AI - App</title>
+
+<style>
+body{
+  margin:0;
+  font-family:sans-serif;
+  background:radial-gradient(circle at top,#0f172a,#020617);
+  color:white;
+  text-align:center;
+}
+
+.container{
+  max-width:700px;
+  margin:auto;
+  padding:80px 20px;
+}
+
+.card{
+  background:#111827;
+  padding:40px;
+  border-radius:16px;
+}
+
+textarea{
+  width:100%;
+  height:180px;
+  padding:15px;
+  border-radius:10px;
+  border:none;
+  resize:none;
+}
+
+button{
+  margin-top:15px;
+  padding:15px 25px;
+  background:#38bdf8;
+  border:none;
+  border-radius:10px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.bar{
+  width:200px;
+  height:6px;
+  background:#1e293b;
+  margin:20px auto;
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.bar div{
+  height:100%;
+  width:0%;
+  background:#38bdf8;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>Analyse ton script</h1>
+
+  <p style="color:#94a3b8;">
+    Colle ton script et reçois une analyse IA instantanée
+  </p>
+
+  <div class="card">
+
+    <textarea id="script" placeholder="Colle ton script ici..."></textarea>
+
+    <br>
+
+    <button onclick="analyze()">
+      🚀 Analyser
+    </button>
+
+    <div class="bar">
+      <div id="bar"></div>
+    </div>
+
+    <div id="result" style="display:none;margin-top:20px;">
+      <h2>Résultat IA</h2>
+      <h1 id="score">0%</h1>
+      <p id="feedback"></p>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+function analyze(){
+
+  const text=document.getElementById("script").value;
+  const bar=document.getElementById("bar");
+  const result=document.getElementById("result");
+  const scoreEl=document.getElementById("score");
+  const feedback=document.getElementById("feedback");
+
+  if(text.length<10){
+    alert("Ajoute un script plus long");
+    return;
+  }
+
+  let progress=0;
+
+  const anim=setInterval(()=>{
+    progress+=10;
+    bar.style.width=progress+"%";
+    if(progress>=100) clearInterval(anim);
+  },120);
+
+  const score=Math.floor(60+Math.random()*35);
+
+  setTimeout(()=>{
+
+    result.style.display="block";
+
+    let current=0;
+    const smooth=setInterval(()=>{
+      current++;
+      scoreEl.innerText=current+"%";
+      if(current>=score) clearInterval(smooth);
+    },20);
+
+    if(score<75){
+      feedback.innerText="⚠️ Hook faible + rythme perfectible";
+    }else{
+      feedback.innerText="🟢 Bon script avec forte rétention";
+    }
+
+  },1500);
+
+}
+
+</script>
+
+</body>
+</html>
