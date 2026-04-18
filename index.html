@@ -272,38 +272,38 @@ form.addEventListener("submit", async function(e) {
     Reçois une analyse complète directement par email
   </p>
 
-  <form id="contact-form" style="margin-top:20px;">
+  <!-- FORMULAIRE -->
+  <form id="contact-form" style="margin-top:30px;">
 
     <input type="email" name="email" placeholder="Ton email..." required
-      style="padding:15px;border-radius:8px;border:none;width:300px;">
+      style="padding:15px;border-radius:10px;border:none;width:280px;">
+
+    <br><br>
 
     <button type="submit"
-      style="padding:15px 20px;background:#38bdf8;border:none;border-radius:8px;margin-left:10px;font-weight:bold;">
-      Analyser mon script
+      style="padding:15px 25px;background:#38bdf8;border:none;border-radius:10px;font-weight:bold;font-size:16px;">
+      🚀 Analyser mon script
     </button>
 
   </form>
 
+  <!-- LOADING (JUSTE ICI 👇) -->
+  <div id="loading" style="margin-top:30px;display:none;">
+
+    <p style="color:#94a3b8;">Analyse en cours...</p>
+
+    <div style="width:200px;height:6px;background:#1e293b;margin:10px auto;border-radius:10px;">
+      <div id="bar" style="width:0%;height:100%;background:#38bdf8;border-radius:10px;"></div>
+    </div>
+
+  </div>
+
 </section>
-    <script>
-const form = document.getElementById("contact-form");
 
-form.addEventListener("submit", async function(e) {
-  e.preventDefault();
+  </form>
 
-  const data = new FormData(form);
-
-  await fetch("https://formspree.io/f/xwvaokrr", {
-    method: "POST",
-    body: data,
-    headers: {
-      'Accept': 'application/json'
-    }
-  });
-
-  window.location.href = "/merci.html";
-});
-</script>
+</section>
+   
     <section style="padding:60px 20px;text-align:center;color:#94a3b8;">
 
   <p style="font-size:18px;">
@@ -320,6 +320,36 @@ form.addEventListener("submit", async function(e) {
   ⚡ Déjà utilisé par les premiers créateurs en accès bêta
 </p>
     <section id="form" style="height:200px;"></section>
+    <script>
+const form = document.getElementById("contact-form");
+const loading = document.getElementById("loading");
+const bar = document.getElementById("bar");
+
+form.addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  loading.style.display = "block";
+
+  let width = 0;
+  const interval = setInterval(() => {
+    width += 10;
+    bar.style.width = width + "%";
+    if (width >= 100) clearInterval(interval);
+  }, 200);
+
+  const data = new FormData(form);
+
+  await fetch("https://formspree.io/f/xwvaokrr", {
+    method: "POST",
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  });
+
+  setTimeout(() => {
+    window.location.href = "/merci.html";
+  }, 1200);
+});
+</script>
      <footer>
         <p>&copy; 2026 RetentionFlow AI. Tous droits réservés.</p>
     </footer>
