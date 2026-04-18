@@ -37,6 +37,29 @@ Notre IA analyse actuellement :
 <p>
 Prépare ton prochain script pendant que l’analyse se termine.
 </p>
+<button type="submit" id="btn">Envoyer</button>
 
+<script>
+const form = document.getElementById("contact-form");
+const btn = document.getElementById("btn");
+
+form.addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  btn.innerText = "Envoi en cours...";
+
+  const data = new FormData(form);
+
+  await fetch("https://formspree.io/f/xwvaokrr", {
+    method: "POST",
+    body: data,
+    headers: {
+      'Accept': 'application/json'
+    }
+  });
+
+  window.location.href = "/merci.html";
+});
+</script>
 </body>
 </html>
