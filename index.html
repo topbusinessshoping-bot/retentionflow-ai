@@ -62,6 +62,11 @@
             .grid { grid-template-columns: 1fr; }
         }
     </style>
+    <style>
+section {
+  margin-bottom: 80px;
+}
+</style>
 </head>
 <body>
 
@@ -148,9 +153,18 @@
         <div class="card" style="background: linear-gradient(to right, #4c1d95, #8b5cf6);">
             <h2 style="margin-bottom: 20px;">Prêt à percer sur les réseaux ?</h2>
             <p style="margin-bottom: 30px;">Rejoignez les 200 personnes déjà inscrites pour l'accès anticipé.</p>
-            <form id="contact-form">
-  <input type="email" name="email" placeholder="Votre meilleur email..." required" style="padding: 15px; border-radius: 8px; border: none; width: 300px;">
-  <button type="submit"class="cta-button" style="background: #000;">Envoyer</button>
+            <form id="contact-form" style="margin-top:30px;">
+
+  <input type="email" name="email" placeholder="Ton email..." required
+    style="padding:15px;border-radius:10px;border:none;width:280px;">
+
+  <br><br>
+
+  <button type="submit"
+    style="padding:15px 25px;background:#38bdf8;border:none;border-radius:10px;font-weight:bold;font-size:16px;">
+    🚀 Analyser mon script
+  </button>
+
 </form>
 
 <script>
@@ -184,7 +198,7 @@ form.addEventListener("submit", async function(e) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body style="margin:0;font-family:sans-serif;background:#0f172a;color:white;">
+<body style="margin:0;font-family:sans-serif;background:linear-gradient(180deg, #0f172a, #020617);color:white;">
 <section style="text-align:center;padding:90px 20px;">
 
   <h1 style="font-size:46px;line-height:1.1;">
