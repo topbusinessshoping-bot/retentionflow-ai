@@ -151,12 +151,17 @@
             <form action="https://formspree.io/f/xwvaokrr" method="POST">
   
   <input type="hidden" name="_redirect" value="https://retentionflow-ai.vercel.app/merci.html">
-
-  <input type="email" name="email" placeholder="Votre meilleur email..." required>
-  
-  <button type="submit">Envoyer</button>
+  <input type="email" name="email" placeholder="Votre meilleur email..." required" style="padding: 15px; border-radius: 8px; border: none; width: 300px;">
+  <button type="submit" class="cta-button" style="background: #000;">Envoyer</button>
 
 </form>
+            <script>
+function redirectAfterSubmit() {
+  setTimeout(function() {
+    window.location.href = "/merci.html";
+  }, 500);
+}
+</script>
         </div>
     </section>
 
