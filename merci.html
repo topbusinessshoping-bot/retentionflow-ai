@@ -2,32 +2,89 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Merci !</title>
+<title>Merci - RetentionFlow AI</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #0f172a;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.card {
+  max-width: 600px;
+  padding: 40px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 16px;
+}
+
+h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #cbd5e1;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.badge {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 8px 14px;
+  background: #22c55e;
+  border-radius: 999px;
+  font-size: 14px;
+}
+
+.button {
+  margin-top: 30px;
+  display: inline-block;
+  padding: 12px 20px;
+  background: #38bdf8;
+  color: black;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+</style>
 </head>
 
-<body style="background:#0f172a;color:white;text-align:center;padding:50px;font-family:sans-serif;">
+<body>
 
-<h1>✅ Merci !</h1>
+<div class="card">
 
-<p style="font-size:18px;margin-top:20px;">
-Ton message a bien été envoyé.
-</p>
+  <div class="badge">✔ Envoi confirmé</div>
 
-<p style="margin-top:20px;color:#94a3b8;">
-On analyse ton script et on revient vers toi rapidement.
-</p>
+  <h1>Merci !</h1>
 
-<br>
+  <p>
+    Ton script est maintenant entre les mains de notre IA.<br>
+    Nous analysons les 3 premières secondes, le rythme et la rétention.
+  </p>
 
-<div style="margin-top:30px;">
-⏳ Tu peux déjà préparer ton prochain contenu.
+  <p>
+    Tu vas recevoir ton analyse très bientôt par email.
+  </p>
+
+  <a class="button" href="/">
+    Retour à l’accueil
+  </a>
+
 </div>
-
-<br><br>
-
-<a href="/" style="color:#38bdf8;text-decoration:none;">
-← Retour à l’accueil
-</a>
-
+<script>
+setTimeout(() => {
+  document.querySelector(".badge").innerText = "Analyse en cours...";
+}, 1500);
+</script>
 </body>
 </html>
