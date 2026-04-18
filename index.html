@@ -148,19 +148,30 @@
         <div class="card" style="background: linear-gradient(to right, #4c1d95, #8b5cf6);">
             <h2 style="margin-bottom: 20px;">Prêt à percer sur les réseaux ?</h2>
             <p style="margin-bottom: 30px;">Rejoignez les 200 personnes déjà inscrites pour l'accès anticipé.</p>
-            <form action="https://formspree.io/f/xwvaokrr" method="POST">
-  
-  <input type="hidden" name="_redirect" value="https://retentionflow-ai.vercel.app/merci.html">
-  <input type="email" name="email" placeholder="Votre meilleur email..." required" style="padding: 15px; border-radius: 8px; border: none; width: 300px;">
-  <button type="submit" class="cta-button" style="background: #000;">Envoyer</button>
-
+            <form id="contact-form">
+  <input type="email" name="email" placeholder="Votre meilleur email..." required>
+  <button type="submit">Envoyer</button>
 </form>
-            <script>
-function redirectAfterSubmit() {
-  setTimeout(function() {
-    window.location.href = "/merci.html";
-  }, 500);
-}
+
+<script>
+const form = document.getElementById("contact-form");
+
+form.addEventListener("submit", async function(e) {
+  e.preventDefault(); // bloque Formspree
+
+  const data = new FormData(form);
+
+  await fetch("https://formspree.io/f/xwvaokrr", {
+    method: "POST",
+    body: data,
+    headers: {
+      'Accept': 'application/json'
+    }
+  });
+
+  // redirection après envoi
+  window.location.href = "/merci.html";
+});
 </script>
         </div>
     </section>
