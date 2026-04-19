@@ -155,7 +155,13 @@ if (cleanWords.length > 0 && (validWords.length / cleanWords.length) < 0.5) {
     alert("Ton script est trop court pour être analysé.");
     return;
   }
+  // 🔒 limite gratuite
+const MAX_ANALYSES = 3;
 
+// récupérer compteur
+let usage = localStorage.getItem("usageCount") || 0;
+usage = parseInt(usage);
+  
   // 🔄 animation barre
   let progress = 0;
   const anim = setInterval(()=>{
@@ -165,7 +171,11 @@ if (cleanWords.length > 0 && (validWords.length / cleanWords.length) < 0.5) {
   },100);
 
   // 🧠 ANALYSE INTELLIGENTE
-
+if (usage >= MAX_ANALYSES) {
+  alert (feedback.innerText = "🔒 Limite atteinte. Passe premium.";)
+result.style.display = "block";
+  return;
+}
   let score = 50;
 
 // 🇫🇷 / 🇬🇧
