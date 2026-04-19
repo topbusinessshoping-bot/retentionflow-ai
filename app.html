@@ -103,6 +103,27 @@ button{
 function analyze(){
 
   const text = document.getElementById("script").value.toLowerCase();
+  // 🔴 Détection répétition abusive
+const words = text.split(" ");
+const uniqueWords = new Set(words);
+
+if (words.length > 0 && (uniqueWords.size / words.length) < 0.4) {
+  score = 40;
+  feedback.innerText = "❌ Script invalide : trop de répétitions, manque de contenu réel.";
+  
+  result.style.display = "block";
+  scoreEl.innerText = "40%";
+  return;
+}
+  // 🔴 trop court
+if (text.split(" ").length < 8) {
+  score = 45;
+  feedback.innerText = "⚠️ Script trop court pour générer une bonne rétention.";
+  
+  result.style.display = "block";
+  scoreEl.innerText = "45%";
+  return;
+}
   const bar = document.getElementById("bar");
   const result = document.getElementById("result");
   const scoreEl = document.getElementById("score");
