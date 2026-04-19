@@ -103,6 +103,15 @@ button{
 function analyze(){
 
   const text = document.getElementById("script").value.toLowerCase();
+  // 🌍 Détection langue
+const isArabic = /[\u0600-\u06FF]/.test(text);
+const isLatin = /^[a-zàâçéèêëîïôûùüÿñæœ\s.,!?'"-]+$/.test(text);
+  if (!isArabic && !isLatin) {
+  result.style.display = "block";
+  scoreEl.innerText = "0%";
+  feedback.innerText = "🌍 Langue non supportée. Utilise français, anglais ou arabe.";
+  return;
+}
   // 🔴 Détection répétition abusive
 const words = text.split(" ");
 const uniqueWords = new Set(words);
@@ -128,6 +137,19 @@ if (text.split(" ").length < 8) {
   const result = document.getElementById("result");
   const scoreEl = document.getElementById("score");
   const feedback = document.getElementById("feedback");
+  const words = text.split(" ");
+  // 🔴 Détection texte incohérent (nonsense)
+const cleanWords = words.filter(w => w.length > 2);
+
+// ratio de mots "normaux"
+const validWords = cleanWords.filter(w => /^[a-zàâçéèêëîïôûùüÿñæœ]+$/.test(w));
+
+if (cleanWords.length > 0 && (validWords.length / cleanWords.length) < 0.5) {
+  result.style.display = "block";
+  scoreEl.innerText = "35%";
+  feedback.innerText = "❌ Texte non valide : contenu incohérent ou non interprétable.";
+  return;
+}
 
   if(text.length < 20){
     alert("Ton script est trop court pour être analysé.");
@@ -146,26 +168,37 @@ if (text.split(" ").length < 8) {
 
   let score = 50;
 
-  // longueur
-  if(text.length > 200) score += 10;
-  if(text.length > 400) score += 10;
+// 🇫🇷 / 🇬🇧
+if (isLatin) {
 
-  // hook (mots d’accroche)
-  if(text.includes("tu") || text.includes("vous")) score += 10;
-  if(text.includes("?")) score += 10;
+  if (text.length > 200) score += 10;
+  if (text.length > 400) score += 10;
 
-  // storytelling
-  if(text.includes("mais") || text.includes("alors")) score += 10;
+  if (text.includes("tu") || text.includes("vous") || text.includes("you")) score += 10;
+  if (text.includes("?")) score += 10;
+
+  if (text.includes("mais") || text.includes("alors") || text.includes("but") || text.includes("so")) score += 10;
+
+  if (text.includes("abonne") || text.includes("like") || text.includes("subscribe")) score += 5;
+
+}
+
+// 🇸🇦 ARABE
+if (isArabic) {
+
+  if (text.length > 200) score += 10;
+  if (text.length > 400) score += 10;
+
+  // hook arabe
+  if (text.includes("هل") || text.includes("أنت")) score += 10;
+
+  // tension
+  if (text.includes("لكن") || text.includes("ولكن")) score += 10;
 
   // CTA
-  if(text.includes("abonne") || text.includes("like")) score += 5;
+  if (text.includes("اشترك") || text.includes("لايك")) score += 5;
 
-  // pénalité si trop court
-  if(text.length < 100) score -= 10;
-
-  // limite score
-  if(score > 95) score = 95;
-  if(score < 40) score = 40;
+}
 
   setTimeout(()=>{
 
@@ -178,18 +211,22 @@ if (text.split(" ").length < 8) {
       scoreEl.innerText = current + "%";
       if(current >= score) clearInterval(smooth);
     },15);
-
-    // 🧠 FEEDBACK INTELLIGENT
-
-    if(score < 60){
-      feedback.innerText = "⚠️ Ton script manque d'accroche. Ajoute une question ou une tension dès le début.";
-    }
-    else if(score < 75){
-      feedback.innerText = "🟡 Bon script, mais le rythme peut être amélioré pour garder l’attention.";
-    }
-    else{
-      feedback.innerText = "🟢 Très bon script ! Structure engageante et bon potentiel de rétention.";
-    }
+      // 🎯 FEEDBACK ICI
+  if (score < 60){
+    feedback.innerText = isArabic
+      ? "⚠️ المقدمة ضعيفة، حاول إضافة سؤال أو جذب الانتباه"
+      : "⚠️ Ton script manque d'accroche.";
+  }
+  else if (score < 75){
+    feedback.innerText = isArabic
+      ? "🟡 جيد لكن يمكن تحسين الإيقاع"
+      : "🟡 Bon script, mais améliorable.";
+  }
+  else{
+    feedback.innerText = isArabic
+      ? "🟢 سكريبت قوي مع احتفاظ جيد بالمشاهدين"
+      : "🟢 Très bon script !";
+  }
 
   },1200);
 }
