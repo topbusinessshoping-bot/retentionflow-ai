@@ -100,63 +100,78 @@ button{
 </div>
 
 <script>
-
 function analyze(){
 
-  const text=document.getElementById("script").value;
-  const bar=document.getElementById("bar");
-  const result=document.getElementById("result");
-  const scoreEl=document.getElementById("score");
-  const feedback=document.getElementById("feedback");
+  const text = document.getElementById("script").value.toLowerCase();
+  const bar = document.getElementById("bar");
+  const result = document.getElementById("result");
+  const scoreEl = document.getElementById("score");
+  const feedback = document.getElementById("feedback");
 
-  if(text.length<10){
-    alert("Ajoute un script plus long");
+  if(text.length < 20){
+    alert("Ton script est trop court pour être analysé.");
     return;
   }
 
-  let progress=0;
+  // 🔄 animation barre
+  let progress = 0;
+  const anim = setInterval(()=>{
+    progress += 10;
+    bar.style.width = progress + "%";
+    if(progress >= 100) clearInterval(anim);
+  },100);
 
-  const anim=setInterval(()=>{
-    progress+=10;
-    bar.style.width=progress+"%";
-    if(progress>=100) clearInterval(anim);
-  },120);
+  // 🧠 ANALYSE INTELLIGENTE
 
-  const score=Math.floor(60+Math.random()*35);
+  let score = 50;
+
+  // longueur
+  if(text.length > 200) score += 10;
+  if(text.length > 400) score += 10;
+
+  // hook (mots d’accroche)
+  if(text.includes("tu") || text.includes("vous")) score += 10;
+  if(text.includes("?")) score += 10;
+
+  // storytelling
+  if(text.includes("mais") || text.includes("alors")) score += 10;
+
+  // CTA
+  if(text.includes("abonne") || text.includes("like")) score += 5;
+
+  // pénalité si trop court
+  if(text.length < 100) score -= 10;
+
+  // limite score
+  if(score > 95) score = 95;
+  if(score < 40) score = 40;
 
   setTimeout(()=>{
 
-    result.style.display="block";
-<div style="margin-top:30px;padding:20px;background:#0b1220;border-radius:12px;">
-  <p>🔓 Débloque une analyse complète :</p>
+    result.style.display = "block";
 
-  <ul style="text-align:left;max-width:300px;margin:auto;color:#94a3b8;">
-    <li>Analyse détaillée ligne par ligne</li>
-    <li>Suggestions personnalisées</li>
-    <li>Optimisation du hook</li>
-  </ul>
-
-  <button style="margin-top:15px;">
-    🚀 Accéder à l’analyse complète
-  </button>
-</div>
-    let current=0;
-    const smooth=setInterval(()=>{
+    // 🎯 animation score
+    let current = 0;
+    const smooth = setInterval(()=>{
       current++;
-      scoreEl.innerText=current+"%";
-      if(current>=score) clearInterval(smooth);
-    },20);
+      scoreEl.innerText = current + "%";
+      if(current >= score) clearInterval(smooth);
+    },15);
 
-    if(score<75){
-      feedback.innerText="⚠️ Hook faible + rythme perfectible (analyse complète disponible)";
-    }else{
-      feedback.innerText="🟢 Bon script avec forte rétention (analyse complète disponible)";
+    // 🧠 FEEDBACK INTELLIGENT
+
+    if(score < 60){
+      feedback.innerText = "⚠️ Ton script manque d'accroche. Ajoute une question ou une tension dès le début.";
+    }
+    else if(score < 75){
+      feedback.innerText = "🟡 Bon script, mais le rythme peut être amélioré pour garder l’attention.";
+    }
+    else{
+      feedback.innerText = "🟢 Très bon script ! Structure engageante et bon potentiel de rétention.";
     }
 
-  },1500);
-
+  },1200);
 }
-
 </script>
 
 </body>
