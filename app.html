@@ -72,7 +72,9 @@ button{
   <p style="color:#94a3b8;">
     Colle ton script et reçois une analyse IA instantanée
   </p>
-
+  <p style="color:#64748b;">
+  Analyse basée sur des modèles de rétention YouTube
+  </p>
   <div class="card">
 
     <textarea id="script" placeholder="Colle ton script ici..."></textarea>
@@ -125,7 +127,19 @@ function analyze(){
   setTimeout(()=>{
 
     result.style.display="block";
+<div style="margin-top:30px;padding:20px;background:#0b1220;border-radius:12px;">
+  <p>🔓 Débloque une analyse complète :</p>
 
+  <ul style="text-align:left;max-width:300px;margin:auto;color:#94a3b8;">
+    <li>Analyse détaillée ligne par ligne</li>
+    <li>Suggestions personnalisées</li>
+    <li>Optimisation du hook</li>
+  </ul>
+
+  <button style="margin-top:15px;">
+    🚀 Accéder à l’analyse complète
+  </button>
+</div>
     let current=0;
     const smooth=setInterval(()=>{
       current++;
@@ -134,9 +148,9 @@ function analyze(){
     },20);
 
     if(score<75){
-      feedback.innerText="⚠️ Hook faible + rythme perfectible";
+      feedback.innerText="⚠️ Hook faible + rythme perfectible (analyse complète disponible)";
     }else{
-      feedback.innerText="🟢 Bon script avec forte rétention";
+      feedback.innerText="🟢 Bon script avec forte rétention (analyse complète disponible)";
     }
 
   },1500);
